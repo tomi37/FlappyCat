@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    public float moveLeft = -3.0f;
+    private float moveLeft = -4.0f;
 
     // Start is called before the first frame update
     void Start()

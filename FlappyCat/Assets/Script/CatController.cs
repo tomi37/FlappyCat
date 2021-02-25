@@ -23,4 +23,18 @@ public class CatController : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bomb")
+        {
+            Debug.Log("Tag=Bomb");
+        }
+        if (collision.gameObject.tag == "Fish")
+        {
+            Debug.Log("Tag=Fish");
+        }
+
+        Destroy(collision.gameObject);
+    }
 }
