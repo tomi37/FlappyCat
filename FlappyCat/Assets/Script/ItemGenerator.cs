@@ -7,7 +7,7 @@ public class ItemGenerator : MonoBehaviour
     public GameObject bombPrefab;
     public GameObject fishPrefab;
     private float span = 0.5f;
-    private int ratio = 2;
+    private int ratio = 3;
     private float itemRange = 4.5f;
     private float delta = 0.0f;
 

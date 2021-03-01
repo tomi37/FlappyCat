@@ -21,6 +21,8 @@ public class CatController : MonoBehaviour
     private Coroutine resetScaleAndMass;
     private bool isRunning = false;
 
+    private GameObject director;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class CatController : MonoBehaviour
         defaultScale = gameObject.transform.localScale;
         scale = gameObject.transform.localScale;
         defaultMass = rigid2D.mass;
+        director = GameObject.Find("GameDirector");
     }
 
     // Update is called once per frame
@@ -51,6 +54,8 @@ public class CatController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Fish")
         {
+            director.GetComponent<GameDirector>().GetFish();
+
             // 猫の大きさを変更
             scale.x *= scaleRatio;
             scale.y *= scaleRatio;
@@ -73,8 +78,6 @@ public class CatController : MonoBehaviour
             {
                 StopCoroutine(resetScaleAndMass);
             }
-
-
             resetScaleAndMass = StartCoroutine(ResetScaleAndMass(catTimer));
         }
 
