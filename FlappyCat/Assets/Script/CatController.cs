@@ -36,8 +36,7 @@ public class CatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // スペースキーでジャンプ
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             rigid2D.AddForce(transform.up * this.jumpForce);
         }
@@ -48,10 +47,10 @@ public class CatController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bomb")
         {
-            Debug.Log("Tag=Bomb");
-            // TODO:
-            // gameoverシーンへ遷移
+            // Go to GameOverScene
+            director.GetComponent<GameDirector>().LoadGameOverScene();
         }
+
         if (collision.gameObject.tag == "Fish")
         {
             director.GetComponent<GameDirector>().GetFish();
