@@ -10,6 +10,7 @@ public class GameDirector : MonoBehaviour
     private GameObject scoreText;
     private float time = 30.0f;
     private float score = 0.0f;
+    private float addScoreGetFish = 50.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,7 @@ public class GameDirector : MonoBehaviour
     }
 
 
-    // GameOverSceneを呼ぶ前に、scoreをGameOverDirectorクラスのscoreに保存
+    // Save the current score to the score of the GameOverDirector class before calling GameOverScene
     private void GameOverSceneLoaded(Scene next, LoadSceneMode mode)
     {
         var gameOver = GameObject.FindWithTag("GameOverDirector").GetComponent<GameOverDirector>();
@@ -48,8 +49,9 @@ public class GameDirector : MonoBehaviour
     }
 
 
+    // Increase score when get a fish
     public void GetFish()
     {
-        score += 50.0f;
+        score += addScoreGetFish;
     }
 }

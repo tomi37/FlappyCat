@@ -6,13 +6,11 @@ using TMPro;
 
 public class GameOverDirector : MonoBehaviour
 {
-    private TextMeshProUGUI scoreText;
-
     public float Score { get; set; } = 0.0f;
 
+    // Start is called before the first frame update
     void Start()
     {
-        // GameSceneから取得したスコアを表示
         GameObject.Find("Score").GetComponent<TextMeshProUGUI>().text = "Your Score: " + Score.ToString("0000");
     }
 

@@ -6,16 +6,10 @@ public class ItemGenerator : MonoBehaviour
 {
     public GameObject bombPrefab;
     public GameObject fishPrefab;
-    private float span = 0.5f;
     private int ratio = 3;
     private float itemRange = 4.5f;
     private float delta = 0.0f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float span = 0.5f;
 
     // Update is called once per frame
     void Update()
@@ -25,6 +19,7 @@ public class ItemGenerator : MonoBehaviour
         {
             delta = 0;
             GameObject item;
+
             int dice = Random.Range(1, 11);
             if (dice <= ratio)
             {
