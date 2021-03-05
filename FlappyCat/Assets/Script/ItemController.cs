@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    private float moveLeft = -4.0f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float Speed { get; set; } = -4.0f;
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(moveLeft * Time.deltaTime, 0, 0);
+        transform.Translate(Speed * Time.deltaTime, 0, 0);
 
         if (transform.position.x < -9.0f)
         {

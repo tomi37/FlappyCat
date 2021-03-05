@@ -11,6 +11,7 @@ public class GameOverDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Display GameScene score
         GameObject.Find("Score").GetComponent<TextMeshProUGUI>().text = "Your Score: " + Score.ToString("0000");
     }
 

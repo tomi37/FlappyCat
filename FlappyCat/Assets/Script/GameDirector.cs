@@ -8,6 +8,8 @@ public class GameDirector : MonoBehaviour
 {
     private GameObject timeText;
     private GameObject scoreText;
+    private GameObject itemGenerator;
+
     private float time = 30.0f;
     private float score = 0.0f;
     private float addScoreGetFish = 50.0f;
@@ -17,6 +19,7 @@ public class GameDirector : MonoBehaviour
     {
         timeText = GameObject.Find("Time");
         scoreText = GameObject.Find("Score");
+        itemGenerator = GameObject.Find("ItemGenerator");
     }
 
     // Update is called once per frame
@@ -27,12 +30,28 @@ public class GameDirector : MonoBehaviour
         timeText.GetComponent<Text>().text = time.ToString("F1");
         scoreText.GetComponent<Text>().text = score.ToString("0000");
 
-        if (time < 0.0f)
+        // Try level design
+        if (10.0f <= time && time < 20.0f)
+        {
+            itemGenerator.GetComponent<ItemGenerator>().SetParameter(0.4f, -6.0f);
+        }
+        else if (5.0f <= time && time < 10.0f)
+        {
+            itemGenerator.GetComponent<ItemGenerator>().SetParameter(0.3f, -8.0f);
+        }
+        else if (0.0f <= time && time < 5.0f)
+        {
+            itemGenerator.GetComponent<ItemGenerator>().SetParameter(0.35f, -7.0f);
+        }
+        else if (time < 0.0f)
         {
             LoadGameOverScene();
         }
     }
 
+    /// <summary>
+    /// transition to GameOverScene
+    /// </summary>
     public void LoadGameOverScene()
     {
         SceneManager.sceneLoaded += GameOverSceneLoaded;
@@ -40,7 +59,11 @@ public class GameDirector : MonoBehaviour
     }
 
 
-    // Save the current score to the score of the GameOverDirector class before calling GameOverScene
+    /// <summary>
+    /// Save the current score to the score of the GameOverDirector class before calling GameOverScene
+    /// </summary>
+    /// <param name="next">Refer to SceneManager definition</param>
+    /// <param name="mode">Refer to SceneManager definition</param>
     private void GameOverSceneLoaded(Scene next, LoadSceneMode mode)
     {
         var gameOver = GameObject.FindWithTag("GameOverDirector").GetComponent<GameOverDirector>();
@@ -49,7 +72,9 @@ public class GameDirector : MonoBehaviour
     }
 
 
-    // Increase score when get a fish
+    /// <summary>
+    /// Increase score when get a fish
+    /// </summary>
     public void GetFish()
     {
         score += addScoreGetFish;
