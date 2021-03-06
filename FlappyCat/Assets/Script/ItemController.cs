@@ -11,6 +11,15 @@ public class ItemController : MonoBehaviour
     {
         transform.Translate(Speed * Time.deltaTime, 0, 0);
 
+        if (transform.position.x < -7.0f)
+        {
+            if (!GetComponent<ParticleSystem>().IsAlive())
+            {
+                GetComponent<SpriteRenderer>().enabled = false;
+                GetComponent<ParticleSystem>().Play();
+            }
+        }
+
         if (transform.position.x < -9.0f)
         {
             Destroy(gameObject);

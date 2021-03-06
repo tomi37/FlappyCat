@@ -33,21 +33,22 @@ public class GameDirector : MonoBehaviour
         // Try level design
         if (10.0f <= time && time < 20.0f)
         {
-            itemGenerator.GetComponent<ItemGenerator>().SetParameter(0.4f, -6.0f);
+            itemGenerator.GetComponent<ItemGenerator>().SetParameter(0.4f, -5.0f);
         }
         else if (5.0f <= time && time < 10.0f)
         {
-            itemGenerator.GetComponent<ItemGenerator>().SetParameter(0.3f, -8.0f);
+            itemGenerator.GetComponent<ItemGenerator>().SetParameter(0.35f, -7.0f);
         }
         else if (0.0f <= time && time < 5.0f)
         {
-            itemGenerator.GetComponent<ItemGenerator>().SetParameter(0.35f, -7.0f);
+            itemGenerator.GetComponent<ItemGenerator>().SetParameter(0.4f, -6.0f);
         }
         else if (time < 0.0f)
         {
             LoadGameOverScene();
         }
     }
+
 
     /// <summary>
     /// transition to GameOverScene

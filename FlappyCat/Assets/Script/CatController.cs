@@ -48,6 +48,8 @@ public class CatController : MonoBehaviour
     /// <param name="collision">bomb or fish object</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        collision.GetComponent<ParticleSystem>().Play();
+
         if (collision.gameObject.tag == "Bomb")
         {
             // Go to GameOverScene
